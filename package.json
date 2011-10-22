@@ -1,0 +1,13 @@
+{
+  "name": "ohh",
+  "subdomain": "ohh",
+  "domains": "ohh.io",
+  "scripts": {
+    "start": "bin/server"
+  },
+  "dependencies": {
+    "charm": "*",
+    "colors": "*"
+  },
+  "version": "0.0.0-8"
+}

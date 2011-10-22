@@ -1,0 +1,2 @@
+var ohh = require('../lib/ohh');
+
