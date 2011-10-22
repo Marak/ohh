@@ -2,11 +2,11 @@ var http = require('http');
 var charmer = require('charm');
 
 
-exports.handler = function(req, res) {
+exports.handler = function(req, stream) {
 
-    res.setHeader('content-type', 'text/ansi');
+    stream.setHeader('content-type', 'text/ansi');
     
-    var charm = charmer(res);
+    var charm = charmer(stream);
     charm.reset();
     
     var radius = 10;
@@ -30,9 +30,11 @@ exports.handler = function(req, res) {
         theta += Math.PI / 40;
     }, 50);
     
-    req.connection.on('end', function () {
+    stream.connection.on('end', function () {
         clearInterval(iv);
+        charm.reset();
         charm.destroy();
+        stream.end();
     });
 
 }

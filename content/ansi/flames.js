@@ -70,9 +70,9 @@ var mask = [
 ];
 
 
-exports.handler = function(req, res) {
+exports.handler = function(options, stream) {
 
-  var charm = charmer(res);
+  var charm = charmer(stream);
   charm.foreground("red");
   charm.push();
 
@@ -105,8 +105,9 @@ exports.handler = function(req, res) {
       setTimeout(draw, 100);
     } else {
       charm.display("reset");
-      res.end();
+      charm.reset();
       charm.destroy();
+      stream.end();
     }
   })();
 

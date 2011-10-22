@@ -1,9 +1,9 @@
 var http = require("http");
 var charmer = require("charm");
 
-exports.handler = function (req, res) {
+exports.handler = function (req, stream) {
 
-  var charm = charmer(res);
+  var charm = charmer(stream);
 
   var upswing = function (x,y) {
     charm.move(x-14,y-8).write([
@@ -43,7 +43,7 @@ exports.handler = function (req, res) {
       setTimeout(function() { animate(!up); }, 500);
     } else {
       charm.write("\n\nAll done!\n");
-      res.end();
+      stream.end();
     }
   })();
 };
