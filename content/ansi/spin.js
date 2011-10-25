@@ -5,10 +5,10 @@ var charmer = require('charm');
 exports.handler = function(req, stream) {
 
     stream.setHeader('content-type', 'text/ansi');
-    
+
     var charm = charmer(stream);
     charm.reset();
-    
+
     var radius = 10;
     var theta = 0;
     var points = [];
@@ -30,11 +30,12 @@ exports.handler = function(req, stream) {
         theta += Math.PI / 40;
     }, 50);
     
-    stream.connection.on('end', function () {
+    stream.connection.on('close', function () {
         clearInterval(iv);
         charm.reset();
         charm.destroy();
         stream.end();
     });
+
 
 }

@@ -111,6 +111,11 @@ exports.handler = function(options, stream) {
     }
   })();
 
-  
+
+  stream.connection.on('close', function () {
+      charm.destroy();
+      stream.end();
+  });
+
 };
 

@@ -46,4 +46,10 @@ exports.handler = function (req, stream) {
       stream.end();
     }
   })();
+
+  stream.connection.on('close', function () {
+      charm.destroy();
+      stream.end();
+  });
 };
+
