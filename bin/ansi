@@ -1,0 +1,22 @@
+
+var charm = require('charm')(process);
+
+var text = "this is a marqee";
+
+setInterval(function(){
+
+
+  var mem = process.memoryUsage().rss.toString();
+  charm.position(1 , 2);
+  charm.write('Memory Usage: ' + mem);
+  charm.display('reset');
+
+
+
+}, 200);
+
+
+charm.on('^C', process.exit);
+
+
+
